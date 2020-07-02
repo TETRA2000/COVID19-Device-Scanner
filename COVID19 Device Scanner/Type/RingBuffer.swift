@@ -21,7 +21,8 @@ public struct RingBuffer<T> {
     }
     
     public func toArray() -> Array<T> {
-        return Array(array.compactMap({$0}))
+        let sorted = array[currentIndex...] + array[..<currentIndex]
+        return Array(sorted.compactMap({$0}))
     }
     
     private mutating func incrementIndex() {
