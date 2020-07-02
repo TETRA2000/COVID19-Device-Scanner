@@ -9,10 +9,48 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    @ObservedObject private var updater = PeripheralsObserber()
+    private let dateFormatter: DateFormatter;
+    
+    init() {
+        dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
     }
+    
+    var body: some View {
+        VStack {
+            Text("COVID19 Device Scanner")
+            
+            List(self.filterLog(log: updater.log), id: \.hashValue) { log in
+                HStack {
+                    Text("[\(self.dateFormatter.string(from: log.timestamp))]")
+                    Text("UUID: \(log.uuid)")
+                        .foregroundColor(Color.green)
+                    Text("RSSI: \(log.rssi)")
+                        .foregroundColor(Color.red)
+                }
+            }
+
+            Button(action: {self.updater.startScan()}) {
+                Text("Scan!!")
+            }
+        }
+    }
+    
+    func filterLog(log: RingBuffer<DiscoveryLog>) -> [DiscoveryLog] {
+        var foundUUID = Set<UUID>()
+        return log.toArray().reversed().compactMap(
+            {elm in
+                if foundUUID.contains(elm.uuid) {
+                    return nil
+                } else {
+                    foundUUID.insert(elm.uuid)
+                    return elm
+                }
+            }
+        )
+    }
+
 }
 
 

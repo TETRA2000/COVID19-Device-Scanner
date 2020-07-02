@@ -14,6 +14,9 @@
 		A97B06BC24AD58B40032D793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97B06BA24AD58B40032D793 /* Main.storyboard */; };
 		A97B06C824AD58B40032D793 /* COVID19_Device_ScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B06C724AD58B40032D793 /* COVID19_Device_ScannerTests.swift */; };
 		A97B06D324AD58B40032D793 /* COVID19_Device_ScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B06D224AD58B40032D793 /* COVID19_Device_ScannerUITests.swift */; };
+		A97B06EC24AD9C960032D793 /* PeripheralsObserber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B06EB24AD9C960032D793 /* PeripheralsObserber.swift */; };
+		A97B06EF24AE1D4E0032D793 /* DiscoveryLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B06EE24AE1D4E0032D793 /* DiscoveryLog.swift */; };
+		A97B06F224AE1DD00032D793 /* RingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B06F124AE1DD00032D793 /* RingBuffer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		A97B06CE24AD58B40032D793 /* COVID19 Device ScannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "COVID19 Device ScannerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97B06D224AD58B40032D793 /* COVID19_Device_ScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COVID19_Device_ScannerUITests.swift; sourceTree = "<group>"; };
 		A97B06D424AD58B40032D793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A97B06EB24AD9C960032D793 /* PeripheralsObserber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralsObserber.swift; sourceTree = "<group>"; };
+		A97B06EE24AE1D4E0032D793 /* DiscoveryLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryLog.swift; sourceTree = "<group>"; };
+		A97B06F124AE1DD00032D793 /* RingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingBuffer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +86,6 @@
 			children = (
 				A97B06B024AD58B20032D793 /* COVID19 Device Scanner */,
 				A97B06C624AD58B40032D793 /* COVID19 Device ScannerTests */,
-				A97B06D124AD58B40032D793 /* COVID19 Device ScannerUITests */,
 				A97B06AF24AD58B20032D793 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +103,9 @@
 		A97B06B024AD58B20032D793 /* COVID19 Device Scanner */ = {
 			isa = PBXGroup;
 			children = (
+				A97B06ED24AE1D400032D793 /* Model */,
+				A97B06EA24AD9C560032D793 /* ObservableObject */,
+				A97B06F024AE1DBF0032D793 /* Type */,
 				A97B06B124AD58B20032D793 /* AppDelegate.swift */,
 				A97B06B324AD58B20032D793 /* ContentView.swift */,
 				A97B06B524AD58B40032D793 /* Assets.xcassets */,
@@ -121,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				A97B06C724AD58B40032D793 /* COVID19_Device_ScannerTests.swift */,
+				A97B06D124AD58B40032D793 /* COVID19 Device ScannerUITests */,
 				A97B06C924AD58B40032D793 /* Info.plist */,
 			);
 			path = "COVID19 Device ScannerTests";
@@ -133,6 +142,30 @@
 				A97B06D424AD58B40032D793 /* Info.plist */,
 			);
 			path = "COVID19 Device ScannerUITests";
+			sourceTree = "<group>";
+		};
+		A97B06EA24AD9C560032D793 /* ObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				A97B06EB24AD9C960032D793 /* PeripheralsObserber.swift */,
+			);
+			path = ObservableObject;
+			sourceTree = "<group>";
+		};
+		A97B06ED24AE1D400032D793 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A97B06EE24AE1D4E0032D793 /* DiscoveryLog.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A97B06F024AE1DBF0032D793 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				A97B06F124AE1DD00032D793 /* RingBuffer.swift */,
+			);
+			path = Type;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +184,8 @@
 			dependencies = (
 			);
 			name = "COVID19 Device Scanner";
+			packageProductDependencies = (
+			);
 			productName = "COVID19 Device Scanner";
 			productReference = A97B06AE24AD58B20032D793 /* COVID19 Device Scanner.app */;
 			productType = "com.apple.product-type.application";
@@ -223,6 +258,8 @@
 				Base,
 			);
 			mainGroup = A97B06A524AD58B20032D793;
+			packageReferences = (
+			);
 			productRefGroup = A97B06AF24AD58B20032D793 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,7 +304,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97B06B424AD58B20032D793 /* ContentView.swift in Sources */,
+				A97B06F224AE1DD00032D793 /* RingBuffer.swift in Sources */,
+				A97B06EC24AD9C960032D793 /* PeripheralsObserber.swift in Sources */,
 				A97B06B224AD58B20032D793 /* AppDelegate.swift in Sources */,
+				A97B06EF24AE1D4E0032D793 /* DiscoveryLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
