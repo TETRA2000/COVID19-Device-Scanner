@@ -14,7 +14,7 @@ struct ContentView: View {
     
     init() {
         dateFormatter = DateFormatter();
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        dateFormatter.dateFormat = "HH:mm:ss"
     }
     
     var body: some View {
